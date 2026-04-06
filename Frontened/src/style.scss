@@ -1,0 +1,28 @@
+// Define global CSS variables for a consistent theme
+@use "sass:color";
+:root {
+    --bg-base: #0f1115;       // Deep, professional dark background
+    --text-main: #f3f4f6;     // Off-white (much easier on the eyes than pure white)
+    --text-muted: #9ca3af;    // Slate gray for secondary text/labels
+    --accent: #6366f1;        // Sleek Tech Indigo
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100vh; // Ensures it stretches all the way down
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    // These two lines make fonts look incredibly crisp on modern monitors
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

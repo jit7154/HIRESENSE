@@ -1,0 +1,120 @@
+@use "sass:color";
+
+// Form-specific variables
+$card-bg: #1f222b;        // Elevated surface color
+$input-bg: #14161b;       // Sunken input background
+$border-color: #374151;   // Subtle gray border
+$primary: #6366f1;        // Matches our global accent
+$primary-hover: color.adjust($primary, $lightness: 5%); // Lightens on hover in dark mode
+
+main {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem; // Safe area for mobile
+
+    .form-container {
+        width: 100%;
+        max-width: 420px;
+        background-color: $card-bg;
+        padding: 3rem 2.5rem;
+        border-radius: 1.25rem; // Smooth, modern corners
+        
+        // In dark mode, we use a faint white border to create a "glassy" edge
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        // And a very deep shadow to ground it
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        input {
+            background-color: $input-bg;
+            border: 1px solid $border-color;
+            color: var(--text-main);
+            font-size: 1rem;
+            padding-inline: 1rem;
+            padding-block: 0.875rem;
+            border-radius: 0.75rem;
+            transition: all 0.2s ease;
+
+            &::placeholder {
+                color: #4b5563; // Darker placeholder text
+            }
+
+            &:focus {
+                outline: none;
+                border-color: $primary;
+                background-color: #1a1d24;
+                // A glowing ring effect for the active input
+                box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+            }
+        }
+    }
+
+    button {
+        margin-top: 1rem;
+        background-color: $primary;
+        color: #ffffff;
+        border: none;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: $primary-hover;
+            // Adds a subtle glow to the button when hovered
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        &:active {
+            transform: translateY(2px); // Pushes the button down when clicked
+        }
+    }
+
+    .form-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+
+        a {
+            color: $primary;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $primary-hover;
+                text-decoration: underline;
+            }
+        }
+    }
+}
