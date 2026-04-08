@@ -12,24 +12,29 @@ const Login=()=>{
 
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
+    const [error, setError] = useState("")
 
      const handleSubmit = async (e) => {
         e.preventDefault()
+        setError("")
+        
         
         const success = await handleLogin({ username, password })
         console.log("2. Did handleLogin succeed?:", success);
        
         if(success){
         navigate('/dashboard')
+
         
        }
        else{
         console.log("X. Success is false. Check the Network tab!");
+        setError("Invalid username or password. Please try again.");
        }
     }
-    if(loading){
-        return (<main><h1>Loading.......</h1></main>)
-    }
+    // if(loading){
+    //     return (<main><h1>Loading.......</h1></main>)
+    // }
 
     console.log("DATA:", username, password)
 
@@ -52,7 +57,8 @@ const Login=()=>{
                         type='password' id="password" name ="password" placeholder='Enter password'/>
                     </div>
 
-                    <button className='button primary-button' >Login</button>
+                    {error && <p style={{color:"red"}}>{error}</p>}
+                    <button type='submit' className='button primary-button' disabled={loading}>Login</button>
                 </form>
                  <p>Do Not have an account ?<Link to="/register">Register</Link></p>
             </div>
